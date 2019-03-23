@@ -103,3 +103,11 @@ venv.bak/
 # mypy
 .mypy_cache/
 
+# praw
+praw.ini
+
+# config file for firebase
+config.py
+
+# firebase json file 
+*.json
