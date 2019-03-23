@@ -1,1 +1,1 @@
-# dank-bot
+# Reddit Bot
