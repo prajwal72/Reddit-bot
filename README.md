@@ -31,7 +31,7 @@ A python script to fetch data using Reddit API and store the data in Firebase fo
 - Select nano option as it is the easiest.
 - Scroll down to end and enter the following command.  
 `	* * * * * cd path to directory; python3 ./bot.py`  
-* * * * * means that the script will be running every minute. 
+`* * * * *` means that the script will be running every minute. 
 - Press Ctrl+o to save, then Ctrl+x to exit.
 
 ## Libraries used
