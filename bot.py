@@ -6,16 +6,16 @@ firebase = pyrebase.initialize_app(config)
 db = firebase.database()
 
 reddit = praw.Reddit('bot1')
-subreddits = ['memes', 'jokes', 'funny']
+subreddits = db.child("subreddits").get()
 
-for subreddit in subreddits:
-    sub = reddit.subreddit(subreddit)
+for subreddit in subreddits.each():
+    sub = reddit.subreddit(subreddit.key())
     for post in sub.hot(limit = 100):
         id = post.id
         if db.child("post_ids").child(id).get().val() == 1:
             continue
         upvotes = post.ups
-        if upvotes < 1000:
+        if upvotes < subreddit.val():
             continue
         title = post.title
         text = post.selftext
@@ -28,5 +28,5 @@ for subreddit in subreddits:
         "text" : text,
         "url" : url
         }
-        db.child("posts").child(subreddit).push(data)
+        db.child("posts").child(subreddit.key()).push(data)
         db.child("post_ids").child(id).set(1)
